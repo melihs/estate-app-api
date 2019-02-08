@@ -2,7 +2,7 @@
 ## Estate App Api (incomplete)
 
 ## Libraries in the Project
-- 
+- jwt-auth https://github.com/tymondesigns/jwt-auth
 
 ### Getting Started
 
