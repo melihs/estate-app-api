@@ -27,5 +27,5 @@ Route::group(['middleware' => ['auth:api']], function () {
        |--------------------------------------------------------------------------
        | Endpoint: /api/user
        */
-    Route::get('user', 'AuthController@user');
+    Route::post('user', 'AuthController@user');
 });
