@@ -10,10 +10,7 @@
 ```console
 $ git clone https://github.com/melihs/estate-app-api.git    
 $ cd estate-app-api && composer install
-$ composer require tymon/jwt-auth
 $ php artisan migrate 
-$ composer require barryvdh/laravel-cors
-$
 
 ```
 
