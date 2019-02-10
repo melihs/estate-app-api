@@ -1,5 +1,9 @@
 <?php
 
+use App\User;
+use App\Company;
+use App\UserCompany;
+use App\Appointment;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,6 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        factory(User::class,10)->create();
+        factory(Company::class,10)->create();
+        factory(UserCompany::class,10)->create();
+        factory(Appointment::class,10)->create();
     }
 }

@@ -17,7 +17,7 @@ class CreateAppointmentsTable extends Migration
             $table->increments('id');
             $table->integer('company_id');
             $table->double('distance');
-            $table->double('distance');
+            $table->dateTime('date');
             $table->string('location');
             $table->timestamps();
         });
