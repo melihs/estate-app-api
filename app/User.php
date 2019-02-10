@@ -11,13 +11,15 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
+protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','surname','address','phone','personel'
     ];
 
     /**
@@ -47,5 +49,10 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function companies()
+    {
+        return $this->belongsToMany('App\Company');
     }
 }
