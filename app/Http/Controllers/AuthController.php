@@ -14,12 +14,20 @@ class AuthController extends BaseController
     {
         $request->validate([
             'name' => 'required|string',
+            'surname' => 'string',
             'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|confirmed'
+            'address' => 'string',
+            'phone' => 'string',
+            'personel' => 'string',
+            'password' => 'required|string|confirmed',
         ]);
         $user = new User([
             'name' => $request->name,
+            'surname' => $request->surname,
             'email' => $request->email,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'personel' => $request->personel,
             'password' => bcrypt($request->password)
         ]);
         $user->save();
@@ -55,17 +63,6 @@ class AuthController extends BaseController
     public function user()
     {
         return $this->sendResponse(auth()->user(), 200, null);
-    }
-
-    /**
-     * Log the user out (Invalidate the token).
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function logout()
-    {
-        auth()->logout();
-        return $this->sendResponse(null,200,null);
     }
 
     /**
