@@ -4,6 +4,14 @@
 ## Libraries in the Project
 - jwt-auth https://github.com/tymondesigns/jwt-auth
 - laravel-cors https://github.com/barryvdh/laravel-cors
+
+## All Endpoints
+```
+- GET  /api/users
+- GET  /api/users/:id
+
+```
+
 ### Getting Started
 
 ### Installation (Manual)
