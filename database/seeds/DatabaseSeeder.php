@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         factory(Company::class,10)->create();
         factory(UserCompany::class,10)->create();
         factory(Appointment::class,10)->create();
+        $this->call(UserSeeder::class);
     }
 }
