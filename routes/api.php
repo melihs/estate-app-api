@@ -15,9 +15,16 @@ use Illuminate\Http\Request;
 
 Route::group([ 'prefix' => 'auth'], function () {
 
+    /*
+   |--------------------------------------------------------------------------
+   | User Controller Routes
+   |--------------------------------------------------------------------------
+   | Endpoint: /api/users
+   */
     Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
     Route::post('register', 'AuthController@register');
+    Route::resource('users', 'UserController');
 });
 
 Route::group(['middleware' => ['auth:api']], function () {
@@ -28,4 +35,5 @@ Route::group(['middleware' => ['auth:api']], function () {
        | Endpoint: /api/user
        */
     Route::post('user', 'AuthController@user');
+
 });
