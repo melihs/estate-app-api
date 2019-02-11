@@ -7,8 +7,13 @@
 
 ## All Endpoints
 ```
+User
 - GET  /api/users
 - GET  /api/users/:id
+
+Company
+- GET  /api/companies
+- GET  /api/companies:id
 
 ```
 
