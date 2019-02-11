@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class BaseController extends Controller
@@ -21,5 +22,23 @@ class BaseController extends Controller
             'errorMessage'  => $message,
         ];
         return response()->json($response, $code);
+    }
+
+    /**
+     * @param $model
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function baseMethod($model)
+    {
+        try {
+            if(empty($model))
+            {
+                return $this->sendResponse(null,404,'Empty data');
+            }
+            return $this->sendResponse($model, 201, null);
+        } catch (\Exception $e) {
+            return $this->sendResponse(null, 500, $e->getMessage());
+        }
     }
 }
