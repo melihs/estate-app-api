@@ -17,7 +17,7 @@ class Company extends Model
      */
     public function users()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User','user_company','company_id','user_id');
     }
 
     /**

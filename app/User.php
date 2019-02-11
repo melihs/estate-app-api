@@ -51,8 +51,11 @@ protected $table = 'users';
         return [];
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function companies()
     {
-        return $this->belongsToMany('App\Company');
+        return $this->belongsToMany('App\Company','user_company','user_id','company_id');
     }
 }
