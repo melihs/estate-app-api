@@ -36,7 +36,7 @@ class BaseController extends Controller
             {
                 return $this->sendResponse(null,404,'Empty data');
             }
-            return $this->sendResponse($model, 201, null);
+            return $this->sendResponse($model, 201, 'Request succeeded');
         } catch (\Exception $e) {
             return $this->sendResponse(null, 500, $e->getMessage());
         }
