@@ -2,53 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
 
 class AuthController extends BaseController
 {
     /**
-     * @param Request $request
-     */
-    public function register(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string',
-            'surname' => 'string',
-            'email' => 'required|string|email|unique:users',
-            'address' => 'string',
-            'phone' => 'string',
-            'personel' => 'string',
-            'password' => 'required|string|confirmed',
-        ]);
-        $user = new User([
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'email' => $request->email,
-            'address' => $request->address,
-            'phone' => $request->phone,
-            'personel' => $request->personel,
-            'password' => bcrypt($request->password)
-        ]);
-        $user->save();
-        $this->sendResponse(null, 201, 'Request succeeded');
-    }
-
-    /**
-     * @param Request $request
+     * @param UserRequest $request
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login(Request $request)
+    public function register(UserRequest $request)
     {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-            'remember_me' => 'boolean'
-        ]);
-        $credentials = request(['email', 'password']);
+        $user = new User($request->all());
+        $user->password = bcrypt($request->password);
+        $user->save();
+        return $this->baseMethod($user);
+    }
+
+    /**
+     * @param LoginRequest $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function login(LoginRequest $request)
+    {
+        $credentials = request([ 'email', 'password' ]);
         $token = auth()->attempt($credentials);
-        if (!$token)
+        if(!$token)
         {
             return $this->sendResponse(null, 401, 'Unauthorized');
         }
