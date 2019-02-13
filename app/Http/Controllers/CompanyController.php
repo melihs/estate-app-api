@@ -13,6 +13,7 @@ class CompanyController extends BaseController
      */
     public function index()
     {
+        $this->authorize('users.personel');
         $company = Company::all();
         return $this->baseMethod($company);
     }
@@ -24,8 +25,8 @@ class CompanyController extends BaseController
      */
     public function store(CompanyRequest $request)
     {
-        $user = auth()->user();
-        $company = $user->companies()->create($request->all());
+        $this->authorize('users.personel');
+        $company = Company::create($request->all());
         return $this->baseMethod($company);
     }
 
@@ -34,8 +35,9 @@ class CompanyController extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show( $id )
+    public function show($id)
     {
+        $this->authorize('users.personel');
         $company = Company::find($id);
         return $this->baseMethod($company);
     }
@@ -48,6 +50,7 @@ class CompanyController extends BaseController
      */
     public function update(CompanyRequest $request,$id)
     {
+        $this->authorize('users.personel');
         $company = Company::findOrFail($id);
         $company->update($request->all());
         return $this->baseMethod($company);
@@ -60,6 +63,7 @@ class CompanyController extends BaseController
      */
     public function destroy($id)
     {
+        $this->authorize('users.personel');
         $company = Company::find($id)->delete();
         return $this->baseMethod($company);
     }

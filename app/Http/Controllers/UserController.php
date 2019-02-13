@@ -27,7 +27,6 @@ class UserController extends BaseController
     public function store(UserRequest $request)
     {
        $this->authorize('users.personel');
-       $user = auth()->user();
        $createUser = new User($request->all());
        $createUser->password = Hash::make($request->password);
        $createUser->save();
