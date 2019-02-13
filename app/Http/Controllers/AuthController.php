@@ -6,6 +6,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends BaseController
 {
@@ -17,7 +18,7 @@ class AuthController extends BaseController
     public function register(UserRequest $request)
     {
         $user = new User($request->all());
-        $user->password = bcrypt($request->password);
+        $user->password = Hash::make($request->password);
         $user->save();
         return $this->baseMethod($user);
     }
