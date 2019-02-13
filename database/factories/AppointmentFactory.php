@@ -10,7 +10,7 @@ $factory->define(Appointment::class, function (Faker $faker) {
         return Company::all()->random();
         },
         'distance' => $faker->randomFloat(),
-        'date' => $faker->dateTime,
+        'date' => date_format($faker->dateTime,'Y-m-d\TH:i:s'),
         'location' => $faker->city
     ];
 });

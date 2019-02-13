@@ -51,7 +51,7 @@ class CompanyController extends BaseController
     public function update(CompanyRequest $request,$id)
     {
         $this->authorize('users.personel');
-        $company = Company::findOrFail($id);
+        $company = Company::find($id);
         $company->update($request->all());
         return $this->baseMethod($company);
     }

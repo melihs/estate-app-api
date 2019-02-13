@@ -34,5 +34,10 @@ Route::group(['middleware' => ['auth:api']], function () {
       |--------------------------------------------------------------------------
       */
     Route::resource('companies', 'CompanyController');
-
+    /*
+      |--------------------------------------------------------------------------
+      | Appointment Controller Routes
+      |--------------------------------------------------------------------------
+      */
+    Route::resource('appointments','AppointmentController');
 });
