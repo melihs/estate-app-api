@@ -7,13 +7,30 @@
 
 ## All Endpoints
 ```
+Auth
+POST /api/login
+POST /api/register
+
 User
-- GET  /api/users
-- GET  /api/users/:id
+- GET     /api/users
+- GET     /api/users/:id
+- POST    /api/users
+- PUT     /api/users/:id
+- DELETE  /api/users/:id
 
 Company
-- GET  /api/companies
-- GET  /api/companies:id
+- GET     /api/companies
+- GET     /api/companies/:id
+- POST    /api/companies
+- PUT     /api/companies/:id
+- DELETE  /api/companies/:id
+
+Appointment
+- GET     /api/appointments
+- GET     /api/appointments/:id
+- POST    /api/appointments
+- PUT     /api/appointments/:id
+- DELETE  /api/appointments/:id
 
 ```
 
