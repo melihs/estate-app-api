@@ -40,16 +40,6 @@ class AuthController extends BaseController
     }
 
     /**
-     * Get the authenticated User.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function user()
-    {
-        return $this->sendResponse(auth()->user(), 200, null);
-    }
-
-    /**
      * Get the token array structure.
      *
      * @param  string $token
