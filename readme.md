@@ -40,7 +40,7 @@ Appointment
 ```console
 $ git clone https://github.com/melihs/estate-app-api.git    
 $ cd estate-app-api && composer install
-$ php artisan migrate 
+$ php artisan migrate:fresh --seed
 
 ```
 
