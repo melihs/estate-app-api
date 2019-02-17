@@ -90,7 +90,7 @@ class UserController extends BaseController
      *
      * @return mixed|string
      */
-    public function emailValid($user)
+    private function emailValid($user)
     {
         if ($user->email !== request('email') || empty(request('email'))) {
             $this->validate(request(),[ 'email' => 'required|string|email|unique:users' ]);
@@ -105,7 +105,7 @@ class UserController extends BaseController
      * @return string|null
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function passwordValid($user)
+    private function passwordValid($user)
     {
         if (request('password')) {
             $this->validate(request(), [ 'password' => 'required|string|min:6|confirmed' ]);
