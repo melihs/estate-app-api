@@ -32,11 +32,11 @@ class BaseController extends Controller
     public function baseMethod($model)
     {
         try {
-            if(empty($model))
+            if($model->isEmpty())
             {
                 return $this->sendResponse(null,404,'Empty data');
             }
-            return $this->sendResponse($model, 201, 'Request succeeded');
+            return $this->sendResponse($model, 200, 'Request succeeded');
         } catch (\Exception $e) {
             return $this->sendResponse(null, 500, $e->getMessage());
         }
