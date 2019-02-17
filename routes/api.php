@@ -22,6 +22,7 @@ Route::group(['middleware' => ['auth:api']], function () {
       |--------------------------------------------------------------------------
       */
     Route::resource('users', 'UserController');
+    Route::get('users/{id}/companies','UserController@UserCompany');
     /*
       |--------------------------------------------------------------------------
       | Company Controller Routes

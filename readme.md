@@ -14,6 +14,7 @@ POST /api/register
 User
 - GET     /api/users
 - GET     /api/users/:id
+- GET     /api/users/:id/companies
 - POST    /api/users
 - PUT     /api/users/:id
 - DELETE  /api/users/:id

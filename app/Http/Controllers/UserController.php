@@ -85,6 +85,12 @@ class UserController extends BaseController
         $this->baseMethod($user);
     }
 
+    public function UserCompany($id)
+    {
+        $user = User::find($id)->companies()->get();
+        return $this->baseMethod($user);
+    }
+
     /**
      * @param $user
      *
