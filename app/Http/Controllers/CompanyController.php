@@ -71,4 +71,10 @@ class CompanyController extends BaseController
         $company = Company::find($id)->delete();
         return $this->baseMethod($company);
     }
+
+    public function companyAppointments($id)
+    {
+        $appointments = Company::find($id)->appointments()->get();
+        return $this->baseMethod($appointments);
+    }
 }

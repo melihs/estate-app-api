@@ -29,6 +29,7 @@ Route::group(['middleware' => ['auth:api']], function () {
       |--------------------------------------------------------------------------
       */
     Route::resource('companies', 'CompanyController');
+    Route::get('companies/{id}/appointments', 'CompanyController@companyAppointments');
     /*
       |--------------------------------------------------------------------------
       | Appointment Controller Routes

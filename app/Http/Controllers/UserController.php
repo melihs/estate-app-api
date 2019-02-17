@@ -85,10 +85,15 @@ class UserController extends BaseController
         $this->baseMethod($user);
     }
 
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function UserCompany($id)
     {
-        $user = User::find($id)->companies()->get();
-        return $this->baseMethod($user);
+        $company = User::find($id)->companies()->get();
+        return $this->baseMethod($company);
     }
 
     /**

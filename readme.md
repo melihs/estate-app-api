@@ -22,6 +22,7 @@ User
 Company
 - GET     /api/companies
 - GET     /api/companies/:id
+- GET     /api/companies/:id/appointments
 - POST    /api/companies
 - PUT     /api/companies/:id
 - DELETE  /api/companies/:id
