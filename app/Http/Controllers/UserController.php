@@ -10,11 +10,19 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends BaseController
 {
     /**
+     * UserController constructor.
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function __construct()
+    {
+        $this->authorize('users.personel');
+    }
+
+    /**
      * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        $this->authorize('users.personel');
         $user = User::all();
         return $this->baseMethod($user);
     }
@@ -26,7 +34,6 @@ class UserController extends BaseController
      */
     public function store(UserRequest $request)
     {
-       $this->authorize('users.personel');
        $createUser = new User($request->all());
        $createUser->password = Hash::make($request->password);
        $createUser->save();
@@ -39,7 +46,6 @@ class UserController extends BaseController
      */
     public function show($id)
     {
-        $this->authorize('users.personel');
         $user = User::find($id);
         return $this->baseMethod($user);
     }
@@ -53,7 +59,6 @@ class UserController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        $this->authorize('users.personel');
         $user = User::findOrFail($id);
         $request->validate([
             'name'     => 'required|string',
@@ -76,7 +81,6 @@ class UserController extends BaseController
 
     public function destroy($id)
     {
-        $this->authorize('users.personel');
         $user = User::find($id)->delete();
         $this->baseMethod($user);
     }
