@@ -8,20 +8,13 @@ use Illuminate\Http\Request;
 
 class CompanyController extends BaseController
 {
-    /**
-     * CompanyController constructor.
-     * @throws \Illuminate\Auth\Access\AuthorizationException
-     */
-    public function __construct()
-    {
-        $this->authorize('users.personel');
-    }
 
     /**
      * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
+        $this->authorize('users.personel');
         $company = Company::all();
         return $this->baseMethod($company);
     }
@@ -33,6 +26,7 @@ class CompanyController extends BaseController
      */
     public function store(CompanyRequest $request)
     {
+        $this->authorize('users.personel');
         $company = Company::create($request->all());
         return $this->baseMethod($company);
     }
@@ -44,6 +38,7 @@ class CompanyController extends BaseController
      */
     public function show($id)
     {
+        $this->authorize('users.personel');
         $company = Company::find($id);
         return $this->baseMethod($company);
     }
@@ -56,6 +51,7 @@ class CompanyController extends BaseController
      */
     public function update(CompanyRequest $request,$id)
     {
+        $this->authorize('users.personel');
         $company = Company::find($id);
         $company->update($request->all());
         return $this->baseMethod($company);
@@ -68,12 +64,19 @@ class CompanyController extends BaseController
      */
     public function destroy($id)
     {
+        $this->authorize('users.personel');
         $company = Company::find($id)->delete();
         return $this->baseMethod($company);
     }
 
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function companyAppointments($id)
     {
+        $this->authorize('users.personel');
         $appointments = Company::find($id)->appointments()->get();
         return $this->baseMethod($appointments);
     }

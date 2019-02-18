@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends BaseController
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api',['except' => ['login']]);
+    }
+
     /**
      * @param UserRequest $request
      *
