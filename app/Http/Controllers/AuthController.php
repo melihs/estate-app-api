@@ -10,10 +10,6 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends BaseController
 {
-    public function __construct()
-    {
-        $this->middleware('auth:api',['except' => ['login']]);
-    }
 
     /**
      * @param UserRequest $request
@@ -42,6 +38,17 @@ class AuthController extends BaseController
             return $this->sendResponse(null, 401, 'Unauthorized');
         }
         return $this->respondWithToken($token);
+    }
+
+    /**
+     * Log the user out (Invalidate the token).
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function logout()
+    {
+        auth()->logout();
+        return response()->json(['message' => 'Successfully logged out']);
     }
 
     /**
